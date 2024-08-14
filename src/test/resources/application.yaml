@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  webflux:
+    taxes-path: api/v1
+
+logging.logstash:
+  enabled: true
+  url: localhost:8500
+  ignorePatterns: .*(favicon).*
+  logHeaders: true
+
+
+logging:
+  level:
+    reactor.netty.http.client: debug
+salesforce:
+    grant-type: client_credentials
+    client-id: 89kzml5ho9ngtizpdlikfq4w
+    client-secret: 3XF3sh4iLCPYRFDbRZJRGhlq
+    account-id: 534008228  
+    event-definition-key: APIEvent-66ac2866-c62d-400d-c60b-33f66839fd02
+    sandbox: true

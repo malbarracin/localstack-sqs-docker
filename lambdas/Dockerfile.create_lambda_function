@@ -1,0 +1,11 @@
+# Dockerfile.lambda_function
+FROM public.ecr.aws/lambda/python:3.8
+
+# Copiar el archivo de la función Lambda al contenedor
+COPY create_lambda_function.py ${LAMBDA_TASK_ROOT}
+
+# Instalar las dependencias necesarias
+RUN pip install boto3
+
+# CMD para la función lambda_function
+CMD ["create_lambda_function.lambda_handler"]
