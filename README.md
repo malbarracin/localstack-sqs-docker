@@ -1,4 +1,4 @@
-# Event-Driven Application
+# localstack-sqs-docker Application
 
 Este proyecto es un ejemplo de una aplicación orientada a eventos que utiliza AWS LocalStack para emular servicios de AWS como SQS, Lambda, API Gateway y MongoDB para almacenamiento de datos. La aplicación permite enviar mensajes a través de una API Gateway, que luego son procesados por una función Lambda y almacenados en una cola SQS y en MongoDB. Una aplicación Spring Boot actúa como listener para los mensajes en la cola SQS y actualiza el estado en MongoDB.
 
