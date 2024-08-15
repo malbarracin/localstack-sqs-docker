@@ -9,7 +9,7 @@ export AWS_SDK_LOAD_CONFIG=false
 echo "LocalStack está listo. Creando recursos..."
 
 # Crear la cola SQS
-aws --endpoint-url=http://host.docker.internal:4566 sqs create-queue --queue-name mi_cola
+aws --endpoint-url=http://host.docker.internal:4566 sqs create-queue --queue-name message-to-sqs.fifo --attributes FifoQueue=true
 
 # Crear la función Lambda para enviar mensajes a SQS
 aws --endpoint-url=http://host.docker.internal:4566 lambda create-function --function-name myLambda \
@@ -17,7 +17,7 @@ aws --endpoint-url=http://host.docker.internal:4566 lambda create-function --fun
 --role arn:aws:iam::000000000000:role/lambda-role \
 --handler create_lambda_function.lambda_handler \
 --zip-file fileb:///scripts/create_lambda_function.zip \
---environment Variables="{QUEUE_NAME=mi_cola, ENDPOINT_URL=http://host.docker.internal:4566}" \
+--environment Variables="{QUEUE_NAME=message-to-sqs.fifo, ENDPOINT_URL=http://host.docker.internal:4566}" \
 --timeout 30
 
 # Configurar la API Gateway
@@ -52,7 +52,7 @@ aws --endpoint-url=http://host.docker.internal:4566 apigateway create-deployment
 
 echo "Recursos creados. LocalStack está listo."
 
-echo "API_ID: $API_ID"
+echo "YOUR_REST_API_ID: $API_ID"
 echo "RESOURCE_ID: $RESOURCE_ID"
 echo "SEND_MESSAGE_RESOURCE_ID: $SEND_MESSAGE_RESOURCE_ID"
 

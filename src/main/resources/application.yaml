@@ -15,7 +15,7 @@ spring:
 #Configuración de AWS y nombre de la cola
 custom:
   aws:
-    sqsOrders: ${SQS_ORDERS:mi_cola}
+    sqsOrders: ${SQS_ORDERS:message-to-sqs.fifo}
     
 logging:
   level:

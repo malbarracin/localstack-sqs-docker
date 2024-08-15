@@ -61,7 +61,7 @@ graph LR
 2. Activa el entorno virtual.
     - ``` source venv/Scripts/activate ```    
 3. Instalar las dependencias de la función Lambda.
-    - ``` source venv/Scripts/activate ```    
+    - ``` pip install urllib3==1.26.15 boto3 pymongo ```    
 
 ## Configuración del Proyecto
    1. El archivo docker-compose.yml incluye todos los servicios necesarios: MongoDB, LocalStack, y Swagger UI.
@@ -97,7 +97,7 @@ graph LR
 
 ## Despliegue Local
    1. Ejecuta ``` sh ./build.sh ``` para construir y empaquetar una función Lambda con sus dependencias listas para ser desplegadas en AWS
-   2. Ejecuta ``` docker-compose up ``` para iniciar todos los servicios.
+   2. Ejecuta ``` docker-compose up -d ``` para iniciar todos los servicios.
    3. **Configurar AWS LocalStack**
       - Con el contenedor en ejecución, ejecuta:
         ```Shell

@@ -116,7 +116,9 @@ def lambda_handler(event, context):
         }
         response = sqs.send_message(
             QueueUrl=queue_url,
-            MessageBody=json.dumps(message_body)
+            MessageBody=json.dumps(message_body),
+            MessageGroupId="default",
+            MessageDeduplicationId=str(record_id)  # Usa un ID único para la deduplicación
         )
         
         # Actualizar el registro en MongoDB con el estado enviado
